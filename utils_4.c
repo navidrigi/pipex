@@ -35,8 +35,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	{
 		if (*big == *little && ft_strncmp(big, little, i) == 0)
 			return ((char *)big);
-		++big;
-		--len;
+		big++;
+		len--;
 	}
 	return (NULL);
 }
