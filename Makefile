@@ -11,11 +11,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(OBDDIR)/%.o: %.c
+$(OBDDIR):
 	mkdir -p $(OBDDIR)
+
+$(OBDDIR)/%.o: %.c | $(OBDDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(OBDDIR)
 
 clean:
 	rm -f $(OBJ)
